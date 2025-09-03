@@ -1,0 +1,45 @@
+{
+  "title": "Questão 146 - ENEM 2021",
+  "context": "<p>Um zootecnista pretende testar se uma nova ração<br>para coelhos é mais eficiente do que a que ele vem<br>utilizando atualmente. A ração atual proporciona uma<br>massa média de 10 kg por coelho, com um desvio padrão<br>de 1 kg, alimentado com essa ração durante um período<br>de três meses.<br>O zootecnista selecionou uma amostra de coelhos e<br>os alimentou com a nova ração pelo mesmo período de<br>tempo. Ao final, anotou a massa de cada coelho, obtendo<br>um desvio padrão de 1,5 kg para a distribuição das<br>massas dos coelhos dessa amostra.<br>Para avaliar a eficiência dessa ração, ele utilizará<br>o coeficiente de variação (CV) que é uma medida de<br>dispersão definida por CV =S/X, em que s representa o<br>desvio padrão, X a média das massas dos coelhos que<br>foram alimentados com uma determinada ração.<br>O zootecnista substituirá a ração que vinha utilizando<br>pela nova, caso o coeficiente de variação da distribuição<br>das massas dos coelhos que foram alimentados com a<br>nova ração for menor do que o coeficiente de variação<br>da distribuição das massas dos coelhos que foram<br>alimentados com a ração atual.</p>",
+  "alternativesIntroduction": "A substituição da ração ocorrerá se a média da distribuição das massas dos coelhos da amostra, em quilograma, for superior",
+  "alternatives": [
+    {
+      "letter": "A",
+      "text": "5,0.",
+      "file": null,
+      "isCorrect": false
+    },
+    {
+      "letter": "B",
+      "text": "9,5.",
+      "file": null,
+      "isCorrect": false
+    },
+    {
+      "letter": "C",
+      "text": "10,0.",
+      "file": null,
+      "isCorrect": false
+    },
+    {
+      "letter": "D",
+      "text": "10,5.",
+      "file": null,
+      "isCorrect": false
+    },
+    {
+      "letter": "E",
+      "text": "15,0.",
+      "file": null,
+      "isCorrect": true
+    }
+  ],
+  "correctAlternative": "E",
+  "discipline": "matematica",
+  "language": null,
+  "tags": [],
+  "year": 2021,
+  "index": 146,
+  "lastModified": "2025-09-03T00:49:52.291Z",
+  "modifiedBy": "admin"
+}

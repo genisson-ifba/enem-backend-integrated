@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+.env*
+.nyc_output
+coverage
+.cache
+*.log
+.DS_Store
+discipline-analysis.txt
+analyze-disciplines.js
+sync-disciplines.js
+fix-disciplines.js

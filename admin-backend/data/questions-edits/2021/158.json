@@ -1,0 +1,45 @@
+{
+  "title": "Questão 158 - ENEM 2021",
+  "context": "<p>Para realizar um voo entre duas cidades que distam 2 000 km uma da outra, uma companhia aérea utilizava um modelo de aeronave A, capaz de transportar até 200 passageiros. Quando uma dessas aeronaves está lotada de passageiros, o consumo de combustível é de 0,02 litro por quilômetro e por passageiro. Essa companhia resolveu trocar o modelo de aeronave A pelo modelo de aeronave B, que é capaz de transportar 10% de passageiros a mais do que o modelo A, mas consumindo 10% menos combustível por quilômetro e por passageiro.</p>\n",
+  "alternativesIntroduction": "A quantidade de combustível consumida pelo modelo de aeronave B, em relação à do modelo de aeronave A, em um voo lotado entre as duas cidades, é",
+  "alternatives": [
+    {
+      "letter": "A",
+      "text": "10% menor",
+      "file": null,
+      "isCorrect": true
+    },
+    {
+      "letter": "B",
+      "text": "1% menor",
+      "file": null,
+      "isCorrect": false
+    },
+    {
+      "letter": "C",
+      "text": "Igual",
+      "file": null,
+      "isCorrect": false
+    },
+    {
+      "letter": "D",
+      "text": "1% maior",
+      "file": null,
+      "isCorrect": false
+    },
+    {
+      "letter": "E",
+      "text": "11% maior",
+      "file": null,
+      "isCorrect": false
+    }
+  ],
+  "correctAlternative": "A",
+  "discipline": "matematica",
+  "language": null,
+  "tags": [],
+  "year": 2021,
+  "index": 158,
+  "lastModified": "2025-09-03T20:10:49.737Z",
+  "modifiedBy": "admin"
+}

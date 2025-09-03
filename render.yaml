@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: enem-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: RATE_LIMIT_MAX
+        value: 500
+      - key: RATE_LIMIT_WINDOW  
+        value: 900000

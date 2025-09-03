@@ -1,0 +1,45 @@
+{
+  "title": "Questão 1 - ENEM 2023",
+  "context": "<p>Esta questão não foi encontrada na API pública. Use o editor para adicionar o conteúdo.</p>",
+  "alternativesIntroduction": "Marque a alternativa correta:",
+  "alternatives": [
+    {
+      "letter": "A",
+      "text": "Alternativa A",
+      "isCorrect": false,
+      "file": null
+    },
+    {
+      "letter": "B",
+      "text": "Alternativa B",
+      "isCorrect": true,
+      "file": null
+    },
+    {
+      "letter": "C",
+      "text": "Alternativa C",
+      "isCorrect": false,
+      "file": null
+    },
+    {
+      "letter": "D",
+      "text": "Alternativa D",
+      "isCorrect": false,
+      "file": null
+    },
+    {
+      "letter": "E",
+      "text": "Alternativa E",
+      "isCorrect": false,
+      "file": null
+    }
+  ],
+  "correctAlternative": "B",
+  "discipline": "matematica",
+  "language": null,
+  "tags": [],
+  "year": 2023,
+  "index": 1,
+  "lastModified": "2025-09-03T20:23:33.340Z",
+  "modifiedBy": "admin"
+}
