@@ -62,14 +62,14 @@ async function questionRoutes(fastify, options) {
           
           if (fullQuestion.files) {
             fullQuestion.files = fullQuestion.files.map(file => 
-              file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://frontend-integrated-f7pr8tkgb-genissons-projects.vercel.app/exams/$1')
+              file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://enem-frontend.vercel.app/exams/$1')
             )
           }
           
           if (fullQuestion.alternatives) {
             fullQuestion.alternatives = fullQuestion.alternatives.map(alt => ({
               ...alt,
-              file: alt.file ? alt.file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://frontend-integrated-f7pr8tkgb-genissons-projects.vercel.app/exams/$1') : alt.file
+              file: alt.file ? alt.file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://enem-frontend.vercel.app/exams/$1') : alt.file
             }))
           }
           
@@ -110,14 +110,14 @@ async function questionRoutes(fastify, options) {
       
       if (question.files) {
         question.files = question.files.map(file => 
-          file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://frontend-integrated-f7pr8tkgb-genissons-projects.vercel.app/exams/$1')
+          file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://enem-frontend.vercel.app/exams/$1')
         )
       }
       
       if (question.alternatives) {
         question.alternatives = question.alternatives.map(alt => ({
           ...alt,
-          file: alt.file ? alt.file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://frontend-integrated-f7pr8tkgb-genissons-projects.vercel.app/exams/$1') : alt.file
+          file: alt.file ? alt.file.replace(/https:\/\/enem\.dev\/(.+)/, 'https://enem-frontend.vercel.app/exams/$1') : alt.file
         }))
       }
       
