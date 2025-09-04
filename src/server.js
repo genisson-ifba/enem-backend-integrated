@@ -85,7 +85,7 @@ await fastify.register(import('./routes/questions.js'), { prefix: '/api' })
 const start = async () => {
   try {
     const PORT = process.env.PORT || 8000
-    const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost'
+    const HOST = '0.0.0.0' // Always bind to 0.0.0.0 for deployment
     
     await fastify.listen({ port: parseInt(PORT), host: HOST })
     console.log(`🚀 Server is running on ${HOST}:${PORT}`)
