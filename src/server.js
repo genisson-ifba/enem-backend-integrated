@@ -33,28 +33,26 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
     'https://localhost:3001'
   ]
 
-// In production, also allow any Vercel deployment
-const corsOptions = process.env.NODE_ENV === 'production' 
-  ? {
-      origin: (origin, callback) => {
-        // Allow requests with no origin (mobile apps, Postman, etc.)
-        if (!origin) return callback(null, true)
-        
-        // Allow configured origins
-        if (allowedOrigins.includes(origin)) return callback(null, true)
-        
-        // Allow any vercel.app deployment
-        if (origin.endsWith('.vercel.app')) return callback(null, true)
-        
-        // Reject others
-        callback(new Error('Not allowed by CORS'))
-      },
-      credentials: true
-    }
-  : {
-      origin: allowedOrigins,
-      credentials: true
-    }
+// Always allow any Vercel deployment (both development and production)
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, Postman, etc.)
+    if (!origin) return callback(null, true)
+    
+    // Allow localhost
+    if (origin.includes('localhost')) return callback(null, true)
+    
+    // Allow any vercel.app deployment (both admin and public frontends)
+    if (origin.endsWith('.vercel.app')) return callback(null, true)
+    
+    // Allow configured origins
+    if (allowedOrigins.includes(origin)) return callback(null, true)
+    
+    // Reject others
+    callback(new Error('Not allowed by CORS'))
+  },
+  credentials: true
+}
 
 await fastify.register(import('@fastify/cors'), corsOptions)
 
