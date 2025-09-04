@@ -11,10 +11,10 @@ const __dirname = dirname(__filename)
 function processQuestionContext(context) {
   if (!context) return context
   
-  // Convert image URLs to local paths
+  // Convert image URLs to working frontend URL
   let processedContext = context.replace(
     /https:\/\/enem\.dev\/(.+)/g,
-    '/exams/$1'
+    'https://enem-frontend-integrated.vercel.app/exams/$1'
   )
   
   // Convert markdown to HTML
