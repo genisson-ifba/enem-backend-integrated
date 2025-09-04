@@ -5,7 +5,7 @@ import { marked } from 'marked'
 import { loadQuestion, loadAllQuestions, hasPublishedVersion } from '../services/questionLoader.js'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__dirname)
+const __dirname = dirname(__filename)
 
 // Function to process question context
 function processQuestionContext(context) {
