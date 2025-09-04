@@ -16,7 +16,7 @@ export function loadQuestion(year, questionId, language = null) {
   let questionPath
   
   // 1. PRIORIDADE 1: Verificar se há versão publicada (editada) no admin
-  const adminPublishedPath = join(__dirname, `../../admin-backend/data/questions-published/${year}/${questionId}.json`)
+  const adminPublishedPath = join(__dirname, `../data/questions-published/${year}/${questionId}.json`)
   if (existsSync(adminPublishedPath)) {
     console.log(`Loading published question ${year}/${questionId} from admin`)
     const questionData = readFileSync(adminPublishedPath, 'utf-8')
@@ -82,7 +82,7 @@ export function loadAllQuestions(year) {
  * @returns {boolean} True se tem versão editada
  */
 export function hasPublishedVersion(year, questionId) {
-  const adminPublishedPath = join(__dirname, `../../admin-backend/data/questions-published/${year}/${questionId}.json`)
+  const adminPublishedPath = join(__dirname, `../data/questions-published/${year}/${questionId}.json`)
   return existsSync(adminPublishedPath)
 }
 
@@ -94,7 +94,7 @@ export function hasPublishedVersion(year, questionId) {
  */
 export function getQuestionMetadata(year, questionId) {
   if (hasPublishedVersion(year, questionId)) {
-    const adminPublishedPath = join(__dirname, `../../admin-backend/data/questions-published/${year}/${questionId}.json`)
+    const adminPublishedPath = join(__dirname, `../data/questions-published/${year}/${questionId}.json`)
     const questionData = JSON.parse(readFileSync(adminPublishedPath, 'utf-8'))
     return questionData._admin || null
   }
