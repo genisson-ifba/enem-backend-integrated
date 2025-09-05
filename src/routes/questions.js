@@ -129,7 +129,7 @@ async function questionRoutes(fastify, options) {
       const { language } = request.query
       
       // Use the integrated question loader (prioritizes edited versions)
-      const question = loadQuestion(parseInt(year), questionId, language)
+      const question = await loadQuestion(parseInt(year), questionId, language)
       
       // Process context (convert URLs and markdown to HTML)
       if (question.context) {

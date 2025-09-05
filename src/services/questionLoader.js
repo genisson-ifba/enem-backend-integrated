@@ -5,6 +5,28 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+// Admin backend URL for published questions
+const ADMIN_API_URL = process.env.ADMIN_API_URL || 'https://enem-admin-backend.onrender.com'
+
+/**
+ * Check if a question has been published by the admin
+ */
+async function getPublishedQuestion(year, questionId) {
+  try {
+    const response = await fetch(`${ADMIN_API_URL}/api/questions/${year}/${questionId}/published`)
+    if (response.ok) {
+      const data = await response.json()
+      if (data.success && data.question) {
+        console.log(`Found published question ${year}/${questionId} from admin API`)
+        return data.question
+      }
+    }
+  } catch (error) {
+    console.log(`Admin API not available or question not published: ${year}/${questionId}`)
+  }
+  return null
+}
+
 /**
  * Carrega uma questão com prioridade para versões editadas
  * @param {number} year - Ano da questão
@@ -12,15 +34,13 @@ const __dirname = dirname(__filename)
  * @param {string} language - Idioma opcional (ingles, espanhol)
  * @returns {Object} Dados da questão
  */
-export function loadQuestion(year, questionId, language = null) {
+export async function loadQuestion(year, questionId, language = null) {
   let questionPath
   
-  // 1. PRIORIDADE 1: Verificar se há versão publicada (editada) no admin
-  const adminPublishedPath = join(__dirname, `../data/questions-published/${year}/${questionId}.json`)
-  if (existsSync(adminPublishedPath)) {
-    console.log(`Loading published question ${year}/${questionId} from admin`)
-    const questionData = readFileSync(adminPublishedPath, 'utf-8')
-    return JSON.parse(questionData)
+  // 1. PRIORIDADE 1: Verificar se há versão publicada (editada) no admin API
+  const publishedQuestion = await getPublishedQuestion(year, questionId)
+  if (publishedQuestion) {
+    return publishedQuestion
   }
   
   // 2. PRIORIDADE 2: Questão original com idioma específico
@@ -51,21 +71,24 @@ export function loadQuestion(year, questionId, language = null) {
  * @param {number} year - Ano das questões
  * @returns {Array} Array de questões
  */
-export function loadAllQuestions(year) {
+export async function loadAllQuestions(year) {
   try {
     const examPath = join(__dirname, `../data/public/exams/${year}/details.json`)
     const examData = readFileSync(examPath, 'utf-8')
     const exam = JSON.parse(examData)
     
     if (exam.questions && exam.questions.length > 0) {
-      return exam.questions.map(question => {
+      const promises = exam.questions.map(async question => {
         try {
-          return loadQuestion(year, question.index)
+          return await loadQuestion(year, question.index)
         } catch (error) {
           console.warn(`Failed to load question ${year}/${question.index}:`, error.message)
           return null
         }
-      }).filter(Boolean) // Remove questões que falharam ao carregar
+      })
+      
+      const questions = await Promise.all(promises)
+      return questions.filter(Boolean) // Remove questões que falharam ao carregar
     }
     
     return []
