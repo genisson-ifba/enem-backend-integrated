@@ -1,17 +1,14 @@
 services:
   - type: web
-    name: enem-backend
+    name: enem-simulado-backend
     env: node
     plan: free
     buildCommand: npm install
-    startCommand: node src/server.js
-    healthCheckPath: /health
+    startCommand: npm start
+    repo: https://github.com/genisson-ifba/enem-backend-integrated
+    branch: main
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 10000
-      - key: RATE_LIMIT_MAX
-        value: 500
-      - key: RATE_LIMIT_WINDOW  
-        value: 900000
+        value: "8000"

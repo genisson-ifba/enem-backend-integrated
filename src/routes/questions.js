@@ -64,8 +64,36 @@ async function questionRoutes(fastify, options) {
     }
   })
 
-  // Get specific exam details (FULL - only use when needed)
+  // Get specific exam details (LIGHTWEIGHT - returns only metadata)
   fastify.get('/exams/:year', async (request, reply) => {
+    try {
+      const { year } = request.params
+      const examPath = join(__dirname, `../data/public/exams/${year}/details.json`)
+      const examData = readFileSync(examPath, 'utf-8')
+      const exam = JSON.parse(examData)
+      
+      // Return only lightweight metadata, no full content
+      const questionsMetadata = exam.questions.map(question => ({
+        index: question.index,
+        year: parseInt(year),
+        title: question.title || `Questão ${question.index} - ENEM ${year}`,
+        discipline: question.discipline,
+        language: question.language,
+        // Don't load context, alternatives, files here
+      }))
+      
+      return {
+        ...exam,
+        questions: questionsMetadata
+      }
+    } catch (error) {
+      fastify.log.error(error)
+      reply.status(404).send({ error: 'Exam not found' })
+    }
+  })
+
+  // Get specific exam with FULL question details (HEAVY - only use when needed)
+  fastify.get('/exams/:year/full', async (request, reply) => {
     try {
       const { year } = request.params
       const examPath = join(__dirname, `../data/public/exams/${year}/details.json`)
